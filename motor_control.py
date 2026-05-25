@@ -23,11 +23,6 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
-for pin in [17, 18, 22, 23, 5, 6, 13, 19]:
-    GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.LOW)
-
 class Motor:
     """Управление произвольным мотором через драйвер L9110S.
 
@@ -75,6 +70,3 @@ class Motor:
         motors[1].on(m[0][1])
         motors[2].on(m[1][0])
         motors[3].on(m[1][1])
-
-def dead_zone(value):
-    return 0.0 if abs(value) < 0.03 else value
